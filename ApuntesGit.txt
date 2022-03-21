@@ -1,0 +1,20 @@
+GIT: Creado por Linus Torvalds
+Vista-Mostrar Ocultar -Extensiones Archivos
+
+Linea de Comandos
+
+pwd: indica ruta donde estoy ubicado
+cd: navegar a una carpeta change directory - cd/ ir al home
+ls: listado de archivos de la ubicación en la que estoy
+ls -al : argumento - todos archivos incluyendo ocultos
+clear : limpiar consola
+ctr+l: limpiar consola
+cd .. :regresa carpeta anterior - anterior.
+mkdir: make directory para crear una carpeta
+touch vacio.txt: crear archivo vacio.
+cat vacio.txt : muestra el contenido del archivo
+history : todos los comando escritos , !NumeroComando : ejecuta el comando indicado en el listado.
+rm vacio.txt: elimina archivo
+rm --help: explicación de cada uno de los comandos.
+
+code : al escribir este comando abre VS Code.
