@@ -6,7 +6,7 @@ Linea de Comandos
 pwd: indica ruta donde estoy ubicado
 cd: navegar a una carpeta change directory - cd/ ir al home
 ls: listado de archivos de la ubicación en la que estoy
-ls -al : argumento - todos archivos incluyendo ocultos
+ls -al :  argumento - todos archivos incluyendo ocultos
 clear : limpiar consola
 ctr+l: limpiar consola
 cd .. :regresa carpeta anterior - anterior.
@@ -18,3 +18,37 @@ rm vacio.txt: elimina archivo
 rm --help: explicación de cada uno de los comandos.
 
 code : al escribir este comando abre VS Code.
+
+COMANDOS GIT
+git .add [Nombre y extensión del archivo]
+git status
+git rm --cached [Archivo] : Quitar de los pendientes por subir- del staged
+git commit -m "Comentario"
+git rm nombre_del_archivo.txt: para eliminar del repositorio
+git log [Nombre Archivo]: Historial de cambios
+git show [Nombre Archivo]: Todos los cambios realizados sobre el archivo.
+
+CONFIGURAR CUENTA GIT
+git conf: para ver las posibles configuraciones
+git config --list : Configuración por defecto de GIT en la máquina
+git config --lis --show-origin: donde estan las configuraciones guardadas.
+git config --global user.name "Ginna Paola Ortega Numpaque"  : Se cambia configuración global de usuario de GIT
+git config --global user.email "ginnaortega92@gmail.com" :
+
+git reset --soft [SHA 1]: elimina los cambios hasta el staging area
+git reset --mixed [SHA 1]: elimina los cambios hasta el working area
+git reset --hard [SHA 1]: regresa hasta el commit del [SHA-1]
+Donde el SHA-1 es el identificador del commit
+-----------------------------------------------
+El comando git show nos muestra los cambios que han existido sobre un archivo y es muy útil para detectar cuándo se produjeron ciertos cambios, qué se rompió y cómo lo podemos solucionar. Pero podemos ser más detallados.
+
+Si queremos ver la diferencia entre una versión y otra, no necesariamente todos los cambios desde la creación del archivo, podemos usar el comando git diff commitA commitB.
+
+Recuerda que puedes obtener el ID de tus commits con el comando git log.
+-------------------------------------------------
+git rm --cached: Elimina los archivos de nuestro repositorio local y del área de staging, pero los mantiene en nuestro disco duro. Básicamente le dice a Git que deje de trackear el historial de cambios de estos archivos, por lo que pasaran a un estado untracked.
+git rm --force: Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
+git reset --soft: Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.
+git reset --hard: Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de staging se borra del historial.
+git reset HEAD: Este es el comando para sacar archivos del área de staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
+
