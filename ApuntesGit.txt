@@ -39,6 +39,37 @@ git reset --soft [SHA 1]: elimina los cambios hasta el staging area
 git reset --mixed [SHA 1]: elimina los cambios hasta el working area
 git reset --hard [SHA 1]: regresa hasta el commit del [SHA-1]
 Donde el SHA-1 es el identificador del commit
+
+git diff : permite ver las diferencias de los archivos modificados pendientes para subir.
+git log --stat : permite ver el log y el detalle de los cambios realizados.
+
+VOLVER A OTROS CAMBIOS ATRAS
+git checkout + ID del commit: Permite volver a la versión del commit del archivo indicado.
+
+Comandos para revisión y comparación en GitHub
+git status: estado de archivos en el repositorio.
+git log: historia entera del archivo.
+git log --stat: cambios específicos en el archivo a partir de un commit.
+git show: cambios históricos y específicos hechos en un archivo.
+git diff “codigo de version 1” “codigo de version 2”: comparar cambios entre versiones.
+git diff: comparar directorio con staging.
+
+Comandos para corrección en GitHub
+git checkout “codigo de version” “nombre del archivo”: volver a la última versión de la que se ha hecho commit.
+git reset: vuelve al pasado sin posibilidad de volver al futuro, se debe usar con especificaciones.
+git reset --soft: vuelve a la versión en el repositorio, pero guarda los cambios en staging. Así, podemos aplicar actualizaciones a un nuevo commit.
+git reset --hard: todo vuelve a su versión anterior
+git reset HEAD: saca los cambios de staging, pero no los borra. Es lo opuesto a git add.
+git rm: elimina los archivos, pero no su historial. Si queremos recuperar algo, solo hay que regresar. se utiliza así:
+git rm --cached elimina los archivos en staging pero los mantiene en el disco duro.
+git rm --force elimina los archivos de git y del disco duro.
+
+COMANDOS RAMAS
+git branch -nombre de la rama-: Con este comando se genera una nueva rama.
+git checkout -nombre de la rama-: Con este comando puedes saltar de una rama a otra.
+git checkout -b rama: Genera una rama y nos mueve a ella automáticamente, Es decir, es la combinación de git branch y git checkout al mismo tiempo.
+git reset id-commit: Nos lleva a cualquier commit no importa la rama, ya que identificamos el id del tag., eliminando el historial de los commit posteriores al tag seleccionado.
+git checkout rama-o-id-commit: Nos lleva a cualquier commit sin borrar los commit posteriores al tag seleccionado.
 -----------------------------------------------
 El comando git show nos muestra los cambios que han existido sobre un archivo y es muy útil para detectar cuándo se produjeron ciertos cambios, qué se rompió y cómo lo podemos solucionar. Pero podemos ser más detallados.
 
@@ -52,3 +83,13 @@ git reset --soft: Borramos todo el historial y los registros de Git pero guardam
 git reset --hard: Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de staging se borra del historial.
 git reset HEAD: Este es el comando para sacar archivos del área de staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
 
+------------------------------------------------------
+git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
+-------------------------------------------------------
+Comandos para trabajo remoto con GIT
+
+git clone url_del_servidor_remoto: Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.
+git push: Luego de hacer git add y git commit debemos ejecutar este comando para mandar los cambios al servidor remoto.
+git fetch: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).
+git merge: También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.
+git pull: Básicamente, git fetch y git merge al mismo tiempo.
