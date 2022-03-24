@@ -70,6 +70,45 @@ git checkout -nombre de la rama-: Con este comando puedes saltar de una rama a o
 git checkout -b rama: Genera una rama y nos mueve a ella automáticamente, Es decir, es la combinación de git branch y git checkout al mismo tiempo.
 git reset id-commit: Nos lleva a cualquier commit no importa la rama, ya que identificamos el id del tag., eliminando el historial de los commit posteriores al tag seleccionado.
 git checkout rama-o-id-commit: Nos lleva a cualquier commit sin borrar los commit posteriores al tag seleccionado.
+git show-branch --all: Historial de todas las ramas
+git branch: Permite ver las ramas creadas repositorio.
+
+REPOSITORIO GIT HUB
+git remote add origin URL: Guardar la URL del repositorio de GitHub con el nombre de origin
+git remote: Verificar que la URL se haya guardado correctamente
+git remote -v : Verificar que la URL se haya guardado correctamente
+git pull origin master --allow-unrelated-histories: Traer la versión del repositorio remoto y hacer merge para crear un commit con los archivos de ambas partes. Podemos usar git fetch y git merge o solo git pull con el flag --allow-unrelated-histories
+git push origin master:  guardar los cambios de nuestro repositorio local en GitHub:
+------------------------------------------------------------------------------------------
+git log --all: Muestra todo el historico
+git log --all --graph --decorate --oneline: Visualiza historico de forma más visual, con los respectivos merge
+
+TAG
+alias arbolito="git log --all --graph --decorate --oneline": permite que se ejecute el comando solo con indicar el alias arbolito.
+
+git tag -a v0-1 -m"Comentario" 0ee5a4a : Se indica un tag al comit especifico
+git show-ref --tags: Permite ver los tags definidos
+git tag -a nombre-del-tag id-del-commit: Crear un nuevo tag y asignarlo a un commit
+git tag -d nombre-del-tag: Borrar un tag en el repositorio local
+git tag o git show-ref --tags: Listar los tags de nuestro repositorio local:.
+git push origin --tags: Publicar un tag en el repositorio remoto.
+git tag -d nombre-del-tag y git push origin :refs/tags/nombre-del-tag: Borrar un tag del repositorio remoto.
+gitk : Visual de estructura del proyecto.
+
+------------------------------------------------------------------------------------------
+Cómo generar tus llaves SSH
+1. Generar tus llaves SSH**
+Recuerda que es muy buena idea proteger tu llave privada con una contraseña.
+ssh-keygen -t rsa -b 4096 -C "tu@email.com"
+2. Terminar de configurar nuestro sistema.
+En Windows y Linux: Encender el “servidor” de llaves SSH de tu computadora:
+eval $(ssh-agent -s)
+Añadir tu llave SSH a este “servidor”:
+ssh-add ruta-donde-guardaste-tu-llave-privada
+En Mac:
+Encender el “servidor” de llaves SSH de tu computadora:
+eval "$(ssh-agent -s)"
+
 -----------------------------------------------
 El comando git show nos muestra los cambios que han existido sobre un archivo y es muy útil para detectar cuándo se produjeron ciertos cambios, qué se rompió y cómo lo podemos solucionar. Pero podemos ser más detallados.
 
@@ -93,3 +132,13 @@ git push: Luego de hacer git add y git commit debemos ejecutar este comando para
 git fetch: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).
 git merge: También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.
 git pull: Básicamente, git fetch y git merge al mismo tiempo.
+--------------------------------------------------------------
+Cómo se realiza un pull request
+Se trabaja en una rama paralela los cambios que se desean git checkout -b <rama>.
+Se hace un commit a la rama git commit -am '<Comentario>'.
+Se suben al remoto los cambios git push origin <rama>.
+En GitHub se hace el pull request comparando la rama master con la rama del fix.
+Uno, o varios colaboradores revisan que el código sea correcto y dan feedback (en el chat del pull request).
+El colaborador hace los cambios que desea en la rama y lo vuelve a subir al remoto (automáticamente jala la historia de los cambios que se hagan en la rama, en remoto).
+Se aceptan los cambios en GitHub.
+Se hace merge a master desde GitHub.
